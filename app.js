@@ -1,7 +1,7 @@
 const TOPICS = [
-  {id:'topic1',no:'01',title:'성경 속 인물 연구소',desc:'성경 속 사람들의 말과 행동을 보고 함께 추리해 봅니다.'},
+  {id:'topic1',no:'01',title:'성경 속 인물 연구소',desc:'성경 속 사람들의 말과 행동을 읽어보고 함께 추리해 봅니다.'},
   {id:'topic2',no:'02',title:'눈길이 머무는 단어',desc:'오늘 이상하게 마음에 머무는 단어를 찾아봅니다.'},
-  {id:'topic3',no:'03',title:'요즘 청년으로 살아간다는 것',desc:'내 삶과 우리가 살아가는 세상의 이야기를 연결해 봅니다.'},
+  {id:'topic3',no:'03',title:'요즘 청년으로 살아간다는 것',desc:'사람이 힘들잖아 지쳤다잖아'},
   {id:'topic4',no:'04',title:'이 세상의 가장 아름다운 젊음',desc:'그리스도의 빛으로 삶을 다시 바라봅니다.'}
 ];
 
@@ -18,13 +18,11 @@ const YOUTH_TOPICS = [
 ];
 
 const FINAL_QUESTIONS = [
-  '오늘 나눔 가운데 내가 가장 오래 가지고 가고 싶은 것은 무엇인가요?',
-  '오늘 다른 사람의 이야기 가운데 내 마음에 남은 것은 무엇인가요?',
-  '지금 내가 놓아주고 싶은 것은 무엇인가요?',
-  '이번 한 주에 내가 한 가지 바꾸어 보고 싶은 것은 무엇인가요?',
-  '지금 그리스도께서 나와 함께 걸으신다면 어디로 함께 가고 싶나요?',
-  '오늘 발견한 나의 모습 가운데 감사하고 싶은 것은 무엇인가요?',
-  '지금 내가 가장 마음을 건네고 싶은 사람은 누구인가요?',
+  '오늘 나눔 가운데 오래 간직하고 싶은 것은 무엇인가요?',
+  '오늘 다른 사람의 이야기 가운데 가장 기억나는 것은 무엇인가요?',
+  '지금 하느님께서 나와 함께 계신다면 무엇을 함께하고 싶나요?',
+  '오늘 나눔 가운데 감사하고 싶은 것은 무엇인가요?',
+  '지금 나의 마음을 건네고 싶은 사람은 누구인가요?',
   '오늘의 나에게 필요한 한 단어를 남긴다면 무엇인가요?'
 ];
 
@@ -155,7 +153,7 @@ function renderHome(){
       <div class="topic-num">${topic.no}</div>
       <div>
         <h3 class="topic-title">${topic.title}</h3>
-        <p class="topic-desc">${done?'완료한 나눔입니다. 다시 들어가 볼 수 있어요.':topic.desc}</p>
+        <p class="topic-desc">${done?'완료한 나눔입니다.':topic.desc}</p>
       </div>
       <div class="topic-arrow">${done?'↻':'›'}</div>`;
     btn.onclick = ()=>openTopic(topic.id);
@@ -167,7 +165,7 @@ function renderHome(){
 
   byId('finalHint').textContent =
     appState.completedCount === 0
-      ? '원할 때 언제든 오늘의 마무리 질문을 열 수 있어요.'
+      ? '오늘의 마무리 질문입니다.'
       : appState.completedCount === 4
         ? '네 가지 나눔을 모두 마쳤어요. 이제 오늘을 정리해 보세요.'
         : '원하는 만큼 나누었다면, 이제 오늘을 정리해 보세요.';
@@ -216,27 +214,27 @@ function closeConfirmModal(){byId('confirmModal').classList.remove('show')}
 function renderTopic1(){
   byId('topicContent').innerHTML = `
     <h2 class="page-title">성경 속 인물 연구소</h2>
-    <p class="page-lead">성격 유형의 정답을 맞히는 활동이 아니라, 성경 속 말과 행동을 근거로 한 사람을 자세히 바라봅니다.</p>
-    ${personPanel('베드로','sky','peter',[
-      ['요한 6,68','“주님, 저희가 누구에게 가겠습니까? 주님께는 영원한 생명의 말씀이 있습니다.”'],
-      ['요한 13,8-9','“제 발은 절대로 씻지 못하십니다.” / “주님, 제 발만 아니라 손과 머리도 씻어 주십시오.”'],
-      ['요한 21,7','“주님이십니다.”']
-    ],['말보다 행동이 먼저인가요, 충분히 생각한 뒤 움직이나요?','신념과 감정을 얼마나 강하게 표현하나요?'])}
-    ${personPanel('야곱','cream','jacob',[
+    <p class="page-lead">성격 유형의 정답을 맞히는 활동이 아니라, 성경 속 말과 행동을 근거로 한 사람을 자세히 바라봅니다.<br />그룹의 막내가 그룹 주제에 해당하는 인물에 대해 읽어보세요.</p>
+    ${personPanel('창세기 그룹 - 야곱','cream','jacob',[
       ['창세 25,31','“먼저 형의 맏아들 권리를 내게 파시오.”'],
       ['창세 32,27','“저에게 축복해 주시지 않으면 놓아 드리지 않겠습니다.”'],
       ['창세 46,30','“네가 아직 살아 있는 것을 이렇게 내 눈으로 보았으니, 이제는 죽어도 여한이 없구나.”']
-    ],['즉흥적인가요, 계산하고 준비하는 사람인가요?','젊은 야곱과 노년의 야곱에게서 무엇이 같고 달라졌나요?'])}
-    ${personPanel('모세','sage','moses',[
+    ],[])}
+    ${personPanel('탈출기 그룹 - 모세','sage','moses',[
       ['탈출 3,11','“제가 무엇이라고 감히 파라오에게 가서 이스라엘 자손들을 이집트에서 이끌어 낼 수 있겠습니까?”'],
       ['탈출 4,10','“저는 말솜씨가 없는 사람입니다.”'],
       ['탈출 32,32','“그러나 이제 그들의 죄를 부디 용서해 주시기 바랍니다.”']
-    ],['반복해서 질문하고 주저하는 이유는 무엇으로 보이나요?','소명 당시와 지도자가 된 뒤의 모세는 어떻게 이어지나요?'])}
+    ],[])}
+    ${personPanel('요한 그룹 - 베드로','sky','peter',[
+      ['요한 6,68','“주님, 저희가 누구에게 가겠습니까? 주님께는 영원한 생명의 말씀이 있습니다.”'],
+      ['요한 13,8-9','“제 발은 절대로 씻지 못하십니다.” / “주님, 제 발만 아니라 손과 머리도 씻어 주십시오.”'],
+      ['요한 21,7','“주님이십니다.”']
+    ],[])}
     <div class="panel">
       <h3>함께 나누기</h3>
       <ul class="questions">
-        <li>세 사람 중 나와 가장 닮았다고 느끼는 사람은 누구인가요?</li>
-        <li>하느님께서는 그 사람의 성격을 바꾸셨을까요, 아니면 그 성격을 사용하셨을까요?</li>
+        <li>인물의 성격 중에서 인상적인 부분은 무엇이며, 왜 그렇게 생각하나요?</li>
+        <li>이 이야기의 끝에 하느님께서는 이 사람의 성격을 바꾸셨을까요, 아니면 이 사람의 모습을 그대로 사용하셨을까요?</li>
       </ul>
       <textarea class="note" data-note="general" placeholder="기억하고 싶은 생각을 적어 두어도 좋아요."></textarea>
     </div>
@@ -249,14 +247,14 @@ function personPanel(name,color,key,verses,questions){
     <h3>${name}</h3>
     ${verses.map(v=>`<div class="scripture"><b>${v[0]}</b><br>${v[1]}</div>`).join('')}
     <ul class="questions">${questions.map(q=>`<li>${q}</li>`).join('')}</ul>
-    <textarea class="note" data-note="${key}" placeholder="${name}를 보며 떠오른 생각이나 근거"></textarea>
+    <textarea class="note" data-note="${key}" placeholder="메모"></textarea>
   </div>`;
 }
 
 function renderTopic2(){
   byId('topicContent').innerHTML = `
     <h2 class="page-title">눈길이 머무는 단어</h2>
-    <p class="page-lead">오늘 이상하게 눈길이 가거나 마음에 걸리는 단어 세 개를 골라 보세요.</p>
+    <p class="page-lead">오늘 특별히 눈길이 가거나 마음에 걸리는 단어 세 개를 골라 보세요.</p>
     <div class="panel rose"><div class="word-cloud">
       ${WORDS.map(w=>`<button class="chip" data-word="${w}">${w}</button>`).join('')}
     </div></div>
@@ -264,11 +262,11 @@ function renderTopic2(){
       <h3>내가 고른 단어</h3>
       <div id="wordResult" class="quote">아직 선택하지 않았어요.</div>
       <ul class="questions">
-        <li>왜 하필 이 세 단어가 오늘 내 눈에 들어왔나요?</li>
-        <li>지금의 나를 표현하는 단어와, 지금의 나에게 필요해서 눈에 들어온 단어가 있나요?</li>
-        <li>세 단어를 연결해 “오늘의 나는 ______.”이라는 문장을 만들어 봅니다.</li>
+        <li>왜 하필 이 세 단어가 오늘 내 눈에 들어왔을까요?</li>
+        <li>지금의 나를 표현하는 단어가 있나요? 아니면 지금의 나에게 필요해서 눈에 들어온 단어가 있나요?</li>
+        <li>그룹원들과 나누고 싶은 내용을 정리해 보세요.</li>
       </ul>
-      <textarea class="note" data-note="general" placeholder="오늘의 나는..."></textarea>
+      <textarea class="note" data-note="general" placeholder="메모"></textarea>
     </div>
     ${completionSection()}`;
   document.querySelectorAll('[data-word]').forEach(btn=>btn.onclick=()=>toggleWord(btn));
@@ -300,12 +298,10 @@ function renderTopic3(){
     <div class="panel">
       <h3 id="youthTopicTitle">하나를 골라 주세요.</h3>
       <ul class="questions">
-        <li>왜 이 주제를 골랐나요?</li>
-        <li>이것은 세상의 이야기인가요, 나의 이야기인가요, 혹은 둘 다인가요?</li>
-        <li>이 현실 안에서 요즘 내가 가장 바라는 것은 무엇인가요?</li>
-        <li>내가 바꿀 수 있는 것과 받아들여야 하는 것은 각각 무엇일까요?</li>
+        <li>왜 이 주제를 골랐는지, 이것은 세상의 이야기인지, 나의 이야기인지, 혹은 둘 다인지 생각해보고 나누어 봅시다.</li>
+        <li>그룹원의 나눔에서 발견한 나의 새로운 생각을 적어봅시다.</li>
       </ul>
-      <textarea class="note" data-note="general" placeholder="나의 한 문장을 적어 두어도 좋아요."></textarea>
+      <textarea class="note" data-note="general" placeholder="메모"></textarea>
     </div>
     ${completionSection()}`;
   document.querySelectorAll('[data-youth]').forEach(btn=>btn.onclick=()=>chooseYouthTopic(btn));
@@ -322,21 +318,35 @@ function chooseYouthTopic(btn){
 function renderTopic4(){
   byId('topicContent').innerHTML = `
     <h2 class="page-title">이 세상의 가장 아름다운 젊음</h2>
-    <p class="page-lead">잠시 말을 멈추고 읽습니다. 마음에 오래 머무는 한 문장이나 한 단어를 발견해 보세요.</p>
+    <p class="page-lead">다음은 프란치스코 교황님께서 젊은이들에게 전하신 권고입니다. 다음 중 한 문단을 선택하여 그룹의 맏이가 읽습니다.</p>
     <div class="panel sky">
       <h3>프란치스코 교황 「그리스도는 살아 계십니다」</h3>
       <div class="quote">“그리스도께서는 살아 계십니다. 그분께서는 우리의 희망이시며 이 세상에 가장 아름다운 젊음을 가져다주시는 분이십니다.”</div>
       <div class="source">「그리스도는 살아 계십니다」 1항</div>
       <h4>함께 읽기</h4>
-      <p class="scripture">143항에서 프란치스코 교황은 청년들에게 삶을 멀리서 바라보는 구경꾼으로 머물지 말고, 위험을 감수하며 삶에 뛰어들라고 초대합니다.</p>
+      <p class="scripture">7항<br />기드온에게서 우리는 현실을 미화시켜 받아들이는 데에 익숙지 않은 젊은이의 솔직함을 보게 됩니다.
+       기드온은 주님께서 자신과 함께 계시다는 말을 듣고 다음과 같이 대답합니다. 
+       "주님께서 저희와 함께 계시다면, 어째서 저희가 이 모든 일을 겪고 있단 말입니까?"(판관 6,13)
+       하느님께서는 그의 못마땅한 대꾸에도 실망하지 않으시고 나아가 이렇게 명하십니다. "너의 그 힘을 지니고 가서 이스라엘을 구원하여라."(판관 6,14)</p>
+      <p class="scripture">13항<br />영원한 젊음이신 예수님께서 우리에게 영원히 젊은 마음을 주고자 하십니다. 하느님 말씀은 우리에게 이렇게 촉구합니다. 
+      "묵은 누룩을 깨끗이 치우고 새 반죽이 되십시오"(1코린 5, 7).
+      바오로 성인은 우리에게 "옛 인간"을 벗어버리고 "새" 인간을 입으라고 권고합니다.(콜로 3,9-10 참조).
+      "끊임없이 새로워지는"(콜로 3,10) 젊음을 입는다는 의미를 바오로 성인은 이렇게 풀이합니다. "동정과 호의와 겸손과 온유와 인내를 입으십시오. 누가 누구에게 불평할 일이 있더라도 서로 참아 주고
+      서로 용서해 주십시오."(콜로 3,12-13) 참젊음은 바로 사랑할 수 있는 마음을 지닌다는 뜻입니다. 
+      반대로, 우리를 서로 떼어 놓는 것들은 모두 우리의 영혼을 늙게 만듭니다. 바오로 성인은 마침내 이렇게 말합니다. 
+      "이 모든 것 위에 사랑을 입으십시오. 사랑은 완전하게 묶어 주는 끈입니다."(콜로 3,14)</p>
+      <p class="scripture">109항<br />여러분이 젊은데도 힘없고 지치고 실의에 빠진다면, 예수님께 새로운 힘을 청하십시오. 
+      예수님과 함께라면, 희망은 결코 사라지지 않습니다. 
+      여러분이 악행이나 나쁜 습관들, 이기심이나 불건전한 쾌락에 압도당하고 있다고 느낄 때에도 예수님께 여러분을 새로워지게 해 달라고 청할 수 있습니다. 
+      생명이 충만하신 예수님께서는 여러분을 도와주시어, 여러분의 젊음이 가치를 지니기를 바라십니다. 
+      그리하여 여러분은 자신만의 특별함과 고유함으로 세상에 여러분만이 가능한 기여를 할 수 있을 것입니다.</p>
     </div>
     <div class="panel">
-      <h3>잠시 침묵하며 읽은 뒤 나눕니다.</h3>
+      <h3>잠시 질문에 답하고 나누어 봅시다.</h3>
       <ul class="questions">
-        <li>어떤 문장이나 단어가 가장 마음에 머물렀나요?</li>
-        <li>그 말과 연결되는 요즘 나의 경험이 있나요?</li>
-        <li>앞에서 나눈 나의 마음과 세상의 현실을 이 글에 비추어 보니 무엇이 다르게 보이나요?</li>
-        <li>지금 그리스도께서 나에게 말씀하신다면 어떤 말씀을 하실 것 같나요?</li>
+        <li>나에게 와닿은 문장이나 단어가 있나요?</li>
+        <li>내가 생각하는 젊음이란 무엇인가요?</li>
+        <li>나를 사랑하시는 하느님께서는 내가 어떤 모습이 되기를 바라실까요?</li>
       </ul>
       <textarea class="note" data-note="general" placeholder="마음에 남은 문장이나 생각"></textarea>
     </div>
@@ -396,21 +406,21 @@ function restoreFinalDraft(){
 function createShareCard(){
   saveFinalDraft();
   const vals=['final1','final2','final3','final4'].map(id=>byId(id).value.trim());
-  if(vals.every(v=>!v)){toast('카드에 담을 내용을 하나 이상 적어 주세요.');return}
+  if(vals.every(v=>!v)){toast('카드에 담을 내용을 하나 이상 적어 보세요.');return}
   const canvas=byId('shareCanvas'),ctx=canvas.getContext('2d'),theme=getCanvasTheme(selectedTheme);
   ctx.clearRect(0,0,canvas.width,canvas.height);ctx.fillStyle=theme.background;ctx.fillRect(0,0,canvas.width,canvas.height);
   ctx.strokeStyle=theme.border;ctx.lineWidth=2;ctx.strokeRect(46,46,988,1258);
   ctx.textAlign='center';ctx.fillStyle='#9B7B58';ctx.font='900 22px sans-serif';ctx.fillText("TODAY'S SHARING",540,125);
-  ctx.fillStyle='#294755';ctx.font='900 48px sans-serif';ctx.fillText('오늘, 말씀 사이에서',540,200);ctx.fillText('나를 만나다',540,260);
+  ctx.fillStyle='#294755';ctx.font='900 25px sans-serif';ctx.fillText('2026 하반기 청년성서모임',540,200);ctx.fillText('시작 나눔 돌아보기',540,260);
   let y=335;
-  const sections=[['오늘의 질문에 대한 나의 답',vals[0]||'—'],['마음에 남은 말',vals[1]||'—'],['오늘 발견한 나',vals[2]||'—'],['이번 한 주의 작은 응답',vals[3]||'—']];
-  const total=vals.join('').length;let size=40;if(total>180)size=34;if(total>300)size=30;if(total>430)size=27;
+  const sections=[['오늘 나의 나눔 주제',vals[0]||'—'],['마음에 남은 말',vals[1]||'—'],['하느님과 나누고 싶은 말',vals[2]||'—'],['이번 한 주 간직하고 싶은 마음',vals[3]||'—']];
+  const total=vals.join('').length;let size=40;if(total>180)size=34;if(total>300)size=30;if(total>430)size=20;
   sections.forEach((sec,i)=>{
     ctx.fillStyle='#6F7F87';ctx.font='800 22px sans-serif';ctx.fillText(sec[0],540,y);y+=48;
     ctx.fillStyle='#263238';ctx.font=`700 ${size}px sans-serif`;
     wrapTextKorean(ctx,sec[1],820).forEach(line=>{ctx.fillText(line,540,y);y+=size*1.55});y+=i===3?12:30;
   });
-  ctx.fillStyle='#6F7F87';ctx.font='500 20px sans-serif';ctx.fillText('말씀을 읽고 · 나를 만나고 · 서로를 듣고 · 다시 삶으로',540,1260);
+  ctx.fillStyle='#6F7F87';ctx.font='500 15px sans-serif';ctx.fillText('2026 하반기 홍제동성당 청년 성서모임 OT',540,1260);
   byId('canvasWrap').classList.add('show');byId('canvasWrap').scrollIntoView({behavior:'smooth'});
 }
 function getCanvasTheme(t){
