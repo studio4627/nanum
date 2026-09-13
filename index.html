@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#f7f6f2">
+  <title>청년성서모임 나눔</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <div class="brand">청년성서모임 나눔</div>
+      <div id="groupBadge" class="group-badge">그룹</div>
+    </header>
+
+    <main>
+      <section id="homeView" class="view active">
+        <div class="hero">
+          <div class="eyebrow">TODAY'S SHARING</div>
+          <h1>오늘, 말씀 사이에서<br>나를 만나다</h1>
+          <p>함께 나눌 주제를 선택해 주세요. 완료한 주제도 언제든 다시 들어갈 수 있어요.</p>
+        </div>
+
+        <div class="progress-card">
+          <div class="progress-row">
+            <span>그룹 진행</span>
+            <strong id="progressText">0 / 4</strong>
+          </div>
+          <div class="progress-track"><div id="progressFill" class="progress-fill"></div></div>
+        </div>
+
+        <div id="connectionMessage" class="connection"></div>
+
+        <div id="topicList" class="topic-list"></div>
+
+        <div class="final-area">
+          <button id="finalButton" class="final-button">
+            <span>
+              <strong>마무리 나눔 · 다시 삶으로</strong>
+              <small id="finalHint">원하는 만큼 나눈 뒤 언제든 마무리할 수 있어요.</small>
+            </span>
+            <span>→</span>
+          </button>
+        </div>
+      </section>
+
+      <section id="topicView" class="view">
+        <button id="topicBack" class="back">← 홈으로</button>
+        <div id="topicContent"></div>
+      </section>
+
+      <section id="finalView" class="view">
+        <button id="finalBack" class="back">← 홈으로</button>
+        <h2 class="page-title">다시 삶으로</h2>
+        <p class="page-lead">오늘 나눈 것을 각자의 말로 정리하고, 한 장의 이미지로 가져갑니다.</p>
+
+        <div id="finalQuestion" class="final-question"></div>
+
+        <label class="field-label">개인 질문에 대한 나의 답</label>
+        <textarea id="final1" class="final-field" placeholder="나누고 싶은 만큼만 적어 보세요."></textarea>
+
+        <label class="field-label">오늘 마음에 남은 말 또는 한 문장</label>
+        <textarea id="final2" class="final-field" placeholder="가장 오래 가지고 가고 싶은 말을 적어 보세요."></textarea>
+
+        <label class="field-label">오늘 발견한 나의 모습</label>
+        <textarea id="final3" class="final-field" placeholder="오늘의 나를 한두 문장으로 정리해 보세요."></textarea>
+
+        <label class="field-label">이번 한 주의 작은 응답</label>
+        <textarea id="final4" class="final-field" placeholder="아주 작아도 좋아요."></textarea>
+
+        <label class="field-label">카드 분위기</label>
+        <div class="theme-row">
+          <button class="theme-button selected" data-theme="light">빛</button>
+          <button class="theme-button" data-theme="water">물</button>
+          <button class="theme-button" data-theme="olive">올리브</button>
+        </div>
+
+        <button id="makeCardButton" class="make-card">나의 나눔 카드 만들기</button>
+        <p class="privacy">개인 나눔 내용은 Google Sheet에 저장하지 않습니다.</p>
+
+        <div id="canvasWrap" class="canvas-wrap">
+          <canvas id="shareCanvas" width="1080" height="1350"></canvas>
+          <button id="downloadButton" class="download-button">PNG 이미지로 저장</button>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div id="toast" class="toast"></div>
+
+  <div id="confirmModal" class="modal-backdrop">
+    <div class="modal">
+      <h3>이 나눔을 완료할까요?</h3>
+      <p>완료 상태는 같은 그룹 링크를 사용하는 사람들에게 공유됩니다. 완료 후에도 다시 들어갈 수 있어요.</p>
+      <div class="modal-actions">
+        <button id="cancelComplete" class="cancel">조금 더 나누기</button>
+        <button id="confirmComplete" class="confirm">완료하기</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
