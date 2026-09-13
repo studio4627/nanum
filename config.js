@@ -1,3 +1,2 @@
-// Google Apps Script 웹앱의 /exec 주소를 넣으세요.
-// 예: https://script.google.com/macros/s/AKfycbxxxxxxxxxxxxxxxx/exec
-const API_URL = "PASTE_YOUR_APPS_SCRIPT_EXEC_URL_HERE";
+
+const API_URL = "https://script.google.com/macros/s/AKfycbwj2Eh1GT4KwNjGtu-hVYU8dodtYHUvaSh4gPYalnD-3eEWWAF8_QSnkdXe3io_3Xsg/exec";
